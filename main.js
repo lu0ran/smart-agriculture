@@ -5,6 +5,7 @@ import modal from '@/plugins/modal' // 弹窗
 import tab from '@/plugins/tab'
 import auth from '@/plugins/auth'
 import config from '@/config' // 配置
+import "@/mockjs/index";
 
 // #ifndef VUE3
 import Vue from 'vue'

@@ -1,13 +1,11 @@
 {
-	"pages": [
-		{
-			"path" : "pages/monitor/monitor",
-			"style" : 
-			{
-				"navigationBarTitleText" : "监控",
-				"enablePullDownRefresh" : false
+	"pages": [{
+			"path": "pages/monitor/monitor",
+			"style": {
+				"navigationBarTitleText": "监控",
+				"enablePullDownRefresh": false
 			}
-		}, 
+		},
 		{
 			"path": "pages/index/index",
 			"style": {
@@ -38,10 +36,17 @@
 			"style": {
 				"navigationBarTitleText": "修改密码"
 			}
-		},{
+		}, {
 			"path": "pages/login/index",
 			"style": {
 				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/deviceController/deviceController",
+			"style": {
+				"navigationBarTitleText": "设备控制",
+				"enablePullDownRefresh": false
 			}
 		}
 	],
@@ -55,6 +60,11 @@
 			"iconPath": "static/images/tabbar/home.png",
 			"selectedIconPath": "static/images/tabbar/home_.png",
 			"text": "监控"
+		}, {
+			"pagePath": "pages/deviceController/deviceController",
+			"iconPath": "static/images/tabbar/home.png",
+			"selectedIconPath": "static/images/tabbar/home_.png",
+			"text": "设备控制"
 		}, {
 			"pagePath": "pages/mine/index",
 			"iconPath": "static/images/tabbar/mine.png",
