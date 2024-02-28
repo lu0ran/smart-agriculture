@@ -47,7 +47,9 @@
 </template>
 
 <script>
-import{getData}from '../../api/mock.js';
+	import {
+		getData
+	} from '../../api/mock.js';
 	export default {
 		data() {
 			return {
@@ -63,7 +65,7 @@ import{getData}from '../../api/mock.js';
 				getData().then(res => {
 					console.log(res);
 				});
-		 	},
+			},
 			getServerData() {
 				//模拟从服务器获取数据时的延时
 				setTimeout(() => {
