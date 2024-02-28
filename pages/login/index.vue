@@ -42,7 +42,9 @@
 		getCurrentInstance,
 		ref
 	} from "vue";
-import { useUserStore } from "../../store/user";
+	import {
+		useUserStore
+	} from "../../store/user";
 	const $modal = getCurrentInstance().appContext.config.globalProperties.$modal;
 	const userStore = useUserStore()
 	let codeUrl = ref('');
@@ -54,6 +56,7 @@ import { useUserStore } from "../../store/user";
 		uuid: '',
 	});
 	getCode();
+
 	function getCode() {
 		getCodeImg().then(res => {
 			captchaEnabled.value = res.captchaEnabled == undefined ? true : res.captchaEnabled
@@ -68,17 +71,17 @@ import { useUserStore } from "../../store/user";
 		if (loginForm.value.username === '') {
 			$modal.msgError("请输入账号");
 		} else if (loginForm.value.password === "") {
-          $modal.msgError("请输入您的密码")
-        } else if (loginForm.value.code === "" && captchaEnabled.value) {
-          $modal.msgError("请输入验证码")
-        } else {
-          $modal.loading("登录中，请耐心等待...")
-          pwdLogin()
-        }
+			$modal.msgError("请输入您的密码")
+		} else if (loginForm.value.code === "" && captchaEnabled.value) {
+			$modal.msgError("请输入验证码")
+		} else {
+			$modal.loading("登录中，请耐心等待...")
+			pwdLogin()
+		}
 	}
 
 	async function pwdLogin() {
-		userStore.Login(loginForm.value).then(res=>{
+		userStore.Login(loginForm.value).then(res => {
 			$modal.closeLoading();
 			loginSuccess();
 		}).catch(err => {
@@ -88,10 +91,11 @@ import { useUserStore } from "../../store/user";
 			}
 		})
 	}
+
 	function loginSuccess(result) {
 		userStore.GetInfo().then(res => {
 			uni.reLaunch({
-				url: '/pages/index/index'
+				url: '/pages/monitor/monitor'
 			})
 		})
 	}
