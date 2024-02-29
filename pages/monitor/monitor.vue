@@ -6,19 +6,19 @@
 				<view class="box">
 					<image src="../../static/images/温度.png" class='box-image'></image>
 					<text class="box-text">
-						温度:{{}}
+						温度:{{ data.temperature }}℃
 					</text>
 				</view>
 				<view class="box">
 					<image src="../../static/images/湿度.png" class='box-image'></image>
 					<text class="box-text">
-						湿度:{{}}
+						湿度:{{ data.humidity }}RH
 					</text>
 				</view>
 				<view class="box">
 					<image src="../../static/images/二氧化碳浓度.png" class='box-image'></image>
 					<text class="box-text">
-						CO₂:{{}}
+						CO₂:{{ data.carbonDioxide }}ppm
 					</text>
 				</view>
 			</view>
@@ -26,14 +26,14 @@
 				<view class="box">
 					<image src="../../static/images/土壤湿度.png" style="height: 7vh;width: 7vh;margin: 0 auto;"></image>
 					<text class="box-text">
-						土壤湿度:{{}}
+						土壤湿度:{{ data.soil_moisture }}%
 					</text>
 				</view>
 				<view class="box">
 					<image src="../../static/images/光照强度.png" style="height: 7.5vh;width: 7.5vh;margin: 0 auto;">
 					</image>
 					<text class="box-text">
-						光照强度:{{}}
+						光照强度:{{ data.Illumination_intensity }}lux
 					</text>
 				</view>
 			</view>
@@ -43,51 +43,34 @@
 			<qiun-data-charts type="line" :opts="opts" :chartData="chartData" class="chart" />
 		</view>
 	</view>
-
 </template>
 
-<script>
+<script setup>
 	import {
-		getData
-	} from '../../api/mock.js';
-	export default {
-		data() {
-			return {
-				chartData: {},
-			};
-		},
-		onReady() {
-			this.getServerData();
-			this.getData2();
-		},
-		methods: {
-			getData2() {
-				getData().then(res => {
-					console.log(res);
-				});
-			},
-			getServerData() {
-				//模拟从服务器获取数据时的延时
-				setTimeout(() => {
-					let res = {
-						categories: ["20:30", "20:35", "20:40", "20:45", "20:50", "20:55"],
-						series: [{
-								name: "温度",
-								data: [35, 36, 31, 33, 30, 34]
-							},
-							{
-								name: "湿度",
-								data: [25.5, 26, 25.9, 25.4, 25, 25.5]
-							},
+		onMounted
+	} from "vue";
+	import {
+		ref
+	} from "vue";
+	const data = ref({});
 
-						]
-					};
-					this.chartData = JSON.parse(JSON.stringify(res));
-				}, 500);
+	onMounted(() => getData());
+
+	const getData = function() {
+		uni.request({
+			url: '/mock/test', // mock地址
+			success: (res) => {
+				console.log("请求成功，返回的数据为：", res.data.data[0]);
+				data.value = res.data.data[0]; // 更新数据
 			},
-		}
-	};
+			fail: (error) => {
+				console.log("请求失败，错误信息为：", error);
+				// 在这里处理请求失败的情况
+			}
+		})
+	}
 </script>
+
 
 <style scoped>
 	.chart {
@@ -145,7 +128,7 @@
 		background-color: white;
 		margin: 0 auto;
 		border-radius: 10px;
-		height: 45vh;
+		height: 50vh;
 		width: 95vw;
 		margin-bottom: 3vh;
 	}

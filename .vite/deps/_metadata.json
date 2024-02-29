@@ -1,17 +1,17 @@
 {
-  "hash": "1179247d",
-  "browserHash": "ec22ea3f",
+  "hash": "23bc0d9d",
+  "browserHash": "c1332a24",
   "optimized": {
     "pinia-plugin-persistedstate": {
       "src": "../../node_modules/pinia-plugin-persistedstate/dist/index.mjs",
       "file": "pinia-plugin-persistedstate.js",
-      "fileHash": "ec359cf1",
+      "fileHash": "16f822f3",
       "needsInterop": false
     },
-    "mockjs": {
-      "src": "../../node_modules/mockjs/dist/mock.js",
-      "file": "mockjs.js",
-      "fileHash": "a7cffe21",
+    "better-mock/dist/mock.mp": {
+      "src": "../../node_modules/better-mock/dist/mock.mp.js",
+      "file": "better-mock_dist_mock__mp.js",
+      "fileHash": "9706faf3",
       "needsInterop": true
     }
   },
