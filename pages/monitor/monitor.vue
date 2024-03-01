@@ -52,9 +52,7 @@
 	import {
 		ref
 	} from "vue";
-	
-	onMounted(() => {getData(),getChartData()});
-	let time = new Date();
+
 	let data = ref({});
 	const getData = function() {
 		uni.request({
@@ -72,29 +70,7 @@
 
 	let chartData = ref()
 	const getChartData = function() {
-      //模拟从服务器获取数据时的延时
-    //   setTimeout(() => {
-    //     //模拟服务器返回数据，如果数据格式和标准格式不同，需自行按下面的格式拼接
-    //     let res = {
-    //         categories: ["2018","2019","2020","2021","2022","2023"],
-    //         series: [
-    //           {
-    //             name: "成交量A",
-    //             data: [35,8,25,37,4,20]
-    //           },
-    //           {
-    //             name: "成交量B",
-    //             data: [70,40,65,100,44,68]
-    //           },
-    //           {
-    //             name: "成交量C",
-    //             data: [100,80,95,150,112,132]
-    //           }
-    //         ]
-    //       };
-    //   	chartData.value = res
-    //   }, 500);
-	uni.request({
+		uni.request({
 			url: '/mock/chart', // mock地址
 			success: (res) => {
 				console.log("请求成功，返回的图表数据为：", res.data.data[0]);
@@ -105,7 +81,10 @@
 				// 在这里处理请求失败的情况
 			}
 		})
-    }
+	}
+
+	getData()
+	getChartData()
 </script>
 
 

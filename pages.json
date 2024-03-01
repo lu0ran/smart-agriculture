@@ -1,5 +1,11 @@
 {
 	"pages": [{
+			"path": "pages/weather-forecast/weather-forecast",
+			"style": {
+				"navigationBarTitleText": "天气预报",
+				"enablePullDownRefresh": false
+			}
+		}, {
 			"path": "pages/monitor/monitor",
 			"style": {
 				"navigationBarTitleText": "监控",
