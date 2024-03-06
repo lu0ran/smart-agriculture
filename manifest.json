@@ -73,7 +73,29 @@
 	"vueVersion": "3",
 	"h5": {
 		"sdkConfigs": {
-			"maps": {}
+			"maps": {
+				"amap": {
+					"key": "53b0c2b3cda9107b3416201dd66e3751",
+					"securityJsCode": "488e7c8281834b032412119e3e74f05e",
+					"serviceHost": ""
+				}
+			}
+		},
+		"router": {
+			"mode": "hash"
+		},
+
+		"devServer": {
+			"proxy": {
+				"/weather": {
+					"target": "https://wis.qq.com/weather/common",
+					"changeOrigin": true,
+					"pathRewrite": {
+						"^/weather": "/weather"
+					}
+				}
+
+			}
 		}
 	}
 }

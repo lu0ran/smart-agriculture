@@ -62,7 +62,7 @@
 		"borderStyle": "white",
 		"backgroundColor": "#fff",
 		"list": [{
-			"pagePath": "pages/monitor/monitor",
+			"pagePath": "pages/weather-forecast/weather-forecast",
 			"iconPath": "static/images/tabbar/home.png",
 			"selectedIconPath": "static/images/tabbar/home_.png",
 			"text": "监控"

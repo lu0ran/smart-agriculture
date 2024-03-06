@@ -82,7 +82,6 @@
 			}
 		})
 	}
-
 	getData()
 	getChartData()
 </script>
